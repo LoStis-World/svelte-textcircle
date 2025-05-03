@@ -1,5 +1,5 @@
 {
-	"name": "svelte-npm-package-template",
+	"name": "svelte-textcircle",
 	"version": "0.0.1",
 	"keywords": [
 		"svelte",
@@ -7,13 +7,13 @@
 	],
 	"author": "LoSti's World",
 	"license": "MIT",
-	"homepage": "https://github.com/LoStis-World/<ADD THE PACKAGE NAME HERE FROM GITHUB>#readme",
+	"homepage": "https://github.com/LoStis-World/svelte-textcircle#readme",
 	"bugs": {
-		"url": "https://github.com/LoStis-World/<ADD THE PACKAGE NAME HERE FROM GITHUB>/issues"
+		"url": "https://github.com/LoStis-World/svelte-textcircle/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/LoStis-World/<ADD THE PACKAGE NAME HERE FROM GITHUB>.git"
+		"url": "git+https://github.com/LoStis-World/svelte-textcircle.git"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -27,20 +27,20 @@
 		"lint": "prettier --check ."
 	},
 	"files": [
-		"dist/package-folder-name",
+		"dist/svelte-textcircle",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
 	"sideEffects": [
 		"**/*.css"
 	],
-	"svelte": "./dist/package-folder-name/index.js",
-	"types": "./dist/package-folder-name/index.d.ts",
+	"svelte": "./dist/svelte-textcircle/index.js",
+	"types": "./dist/svelte-textcircle/index.d.ts",
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/package-folder-name/index.d.ts",
-			"svelte": "./dist/package-folder-name/index.js"
+			"types": "./dist/svelte-textcircle/index.d.ts",
+			"svelte": "./dist/svelte-textcircle/index.js"
 		}
 	},
 	"peerDependencies": {
