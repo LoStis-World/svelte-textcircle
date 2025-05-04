@@ -74,14 +74,14 @@ pnpm add svelte-textcircle
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| `duration` | `string` | `'30s'` | CSS `animation-duration`. |
-| `easing` | `'ease' \| 'ease-in' \| 'ease-out' \| 'ease-in-out' \| 'linear' \| string` | `'linear'` | CSS `animation-timing-function`. |
-| `delay` | `string` | `'0s'` | CSS `animation-delay`. |
-| `direction` | `'normal' \| 'reverse'` | `'normal'` | CSS `animation-direction`. |
-| `count` | `'infinite' \| number` | `'infinite'` | CSS `animation-iteration-count`. |
-| `animateInView` | `boolean` | `true` | Start animation only when component is in viewport. Overridden by `animateOnHover`. |
-| `animateOnHover` | `boolean` | `false` | Pause animation initially, play only on hover. |
-| `stopAnimateOnHover` | `boolean` | `false` | If animating by default (`animateInView` is true and `animateOnHover` is false), pause animation on hover. |
+| duration | string | '30s' | CSS `animation-duration`. |
+| easing | 'ease' \| 'ease-in' \| 'ease-out' \| 'ease-in-out' \| 'linear' \| string | 'linear' | CSS `animation-timing-function`. |
+| delay | string | '0s' | CSS `animation-delay`. |
+| direction | 'normal' \| 'reverse' | 'normal' | CSS `animation-direction`. |
+| count | 'infinite' \| number | 'infinite' | CSS `animation-iteration-count`. |
+| animateInView | boolean | true | Start animation only when component is in viewport. Overridden by `animateOnHover`. |
+| animateOnHover | boolean | false | Pause animation initially, play only on hover. |
+| stopAnimateOnHover | boolean | false | If animating by default (`animateInView` is true and `animateOnHover` is false), pause animation on hover. |
 
 ## Examples
 
