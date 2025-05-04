@@ -21,7 +21,7 @@ type TextcircleOptions = {
 
 type TextcircleAnimation = {
 	duration?: string | null | undefined;
-	timing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string | null | undefined;
+	easing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string | null | undefined;
 	delay?: string | null | undefined;
 	direction?: 'normal' | 'reverse' | null | undefined;
 	count?: 'infinite' | number | null | undefined;

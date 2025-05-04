@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { TextcircleProps, TextcircleAnimation, TextcircleOptions } from './index.js';
 
 	let { class: classes, text, children, options, animation }: TextcircleProps = $props();
@@ -17,13 +18,13 @@
 	// Destructor animation props
 	const {
 		duration, // Provide a default value for 'duration'
-		timing, // Corrected syntax
+		easing, // Corrected syntax
 		delay, // Corrected syntax
 		direction, // Corrected syntax
 		count, // Corrected syntax
 		animateInView = true,
-		animateOnHover = true, // Corrected syntax
-		stopAnimateOnHover = true // Corrected syntax
+		animateOnHover = false, // Corrected syntax
+		stopAnimateOnHover = false // Corrected syntax
 	}: TextcircleAnimation = animation || {};
 
 	const textArray =
@@ -32,7 +33,29 @@
 					.flatMap((word) => [word, ' ', divider?.trim(), ' '])
 					.flatMap((letter) => (letter === divider?.trim() ? [letter] : [...(letter || '')]))
 			: [...text.join('')].map((char) => char);
-	console.log(textArray);
+
+	// check with intersectionobser if textcircle is in view if animateInView is true
+	let observer: IntersectionObserver | null = null;
+
+	onMount(() => {
+		if (animateInView) {
+			observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					(entry.target as HTMLElement).style.setProperty(
+						'--aoh',
+						entry.isIntersecting ? 'running' : 'paused'
+					);
+				});
+			});
+
+			observer.observe(document.querySelector('.textcircle') as HTMLElement);
+		}
+		return () => {
+			if (observer) {
+				observer.disconnect();
+			}
+		};
+	});
 </script>
 
 <div
@@ -53,7 +76,7 @@
 		style:--tt={textTransform}
 		style:--ro={rotate}
 		style:--du={duration}
-		style:--ti={timing}
+		style:--ti={easing}
 		style:--de={delay}
 		style:--di={direction}
 		style:--c={count}

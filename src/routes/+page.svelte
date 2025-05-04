@@ -2,14 +2,10 @@
 	import Textcircle from '$lib/svelte-textcircle/textcircle.svelte';
 </script>
 
+<div class="container"></div>
+
 <div class="container">
-	<Textcircle
-		text={['Svelte', 'Tailwind', 'Laravel', 'Typescript']}
-		options={{
-			dividerColor: 'red',
-			fontSize: '0.8em'
-		}}
-	>
+	<Textcircle text={['Svelte', 'Tailwind', 'Laravel', 'Typescript']}>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="80"
@@ -28,6 +24,8 @@
 		>
 	</Textcircle>
 </div>
+
+<div class="container"></div>
 
 <style>
 	.container {
