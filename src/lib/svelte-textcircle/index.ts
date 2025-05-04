@@ -13,7 +13,7 @@ type TextcircleOptions = {
 	circlesize?: '250px' | '300px' | string | null | undefined;
 	textTransform?: 'uppercase' | 'lowercase' | 'none' | null | undefined;
 	fontSize?: '1em' | '1.5em' | '1rem' | string | null | undefined;
-	fontWeight?: 'lighter' | 'normal' | 'bold' | 'bolder' | number | null | undefined;
+	fontWeight?: 'lighter' | 'normal' | 'bold' | 'bolder' | null | undefined;
 	divider?: string | null | undefined;
 	dividerColor?: string | null | undefined;
 	rotate?: number | null | undefined;

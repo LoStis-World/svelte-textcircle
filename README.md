@@ -65,9 +65,9 @@ pnpm add svelte-textcircle
 | `circlesize` | `string` | `'250px'` | Size (width & height) of the circle. |
 | `textTransform` | `'uppercase' \| 'lowercase' \| 'none'` | `'uppercase'` | CSS `text-transform` for the text. |
 | `fontSize` | `string` | `'1em'` | CSS `font-size` for the text. |
-| `fontWeight` | `string \| number` | `'normal'` | CSS `font-weight` for the text. |
+| `fontWeight` | `'lighter' \| 'normal' \| 'bold' \| 'bolder' \| string` | `'normal'` | CSS `font-weight` for the text. |
 | `divider` | `string` | `'&diams;'` | HTML entity or character to place between words. Set to `''` or `undefined` to disable. |
-| `dividerColor` | `string` | `undefined` | CSS color for the divider character. Defaults to text color. |
+| `dividerColor` | `string` | `currentColor` | CSS color for the divider character. Defaults to text color. |
 | `rotate` | `number` | `undefined` | Initial rotation offset in degrees. |
 
 ### Animation Props (`animation={...}`)
@@ -75,7 +75,7 @@ pnpm add svelte-textcircle
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
 | `duration` | `string` | `'30s'` | CSS `animation-duration`. |
-| `easing` | `string` | `'linear'` | CSS `animation-timing-function`. |
+| `easing` | `'ease' \| 'ease-in' \| 'ease-out' \| 'ease-in-out' \| 'linear' \| string` | `'linear'` | CSS `animation-timing-function`. |
 | `delay` | `string` | `'0s'` | CSS `animation-delay`. |
 | `direction` | `'normal' \| 'reverse'` | `'normal'` | CSS `animation-direction`. |
 | `count` | `'infinite' \| number` | `'infinite'` | CSS `animation-iteration-count`. |
@@ -169,6 +169,15 @@ You can also override the CSS variables used internally, although using the prop
 
 - For optimal appearance with longer text, you might need to decrease `fontSize` or increase `circlesize`.
 - The component maintains its aspect ratio, but ensure the `circlesize` is appropriate for different screen sizes. Consider using viewport units (`vw`, `vh`, `vmin`, `vmax`) or media queries.
+
+## Contributing
+
+Contributions are welcome! Please ensure all changes are well-documented and tested.
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes with clear and descriptive messages.
+4. Submit a pull request.
 
 ## License
 
