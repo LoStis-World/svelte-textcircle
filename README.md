@@ -28,19 +28,13 @@ npm install svelte-textcircle
 
 # pnpm
 pnpm add svelte-textcircle
-
-# yarn
-yarn add svelte-textcircle
 ```
 
 ## Basic Usage
 
 ```svelte
 <script>
-	// Assuming you have configured path aliases or use the full path
-	import Textcircle from '$lib/svelte-textcircle/textcircle.svelte';
-	// Or adjust the import based on your setup if installed as a package:
-	// import { Textcircle } from 'svelte-textcircle';
+	import { Textcircle } from '@lostisworld/svelte-textcircle';
 </script>
 
 <!-- Basic usage -->
