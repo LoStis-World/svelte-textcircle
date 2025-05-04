@@ -1,129 +1,186 @@
-![textcircle-min](https://user-images.githubusercontent.com/83787591/220706445-772e4de3-5265-4ceb-83b1-31a875271149.jpg)
+# svelte-textcircle
 
-# Astro TextCircle
-If you want to showcase your text in a circular layout, give this Astro component a try.
-> **While this component isn't inherently responsive, you can easily create multiple circles that adjust to fit the viewport - just keep this in mind.**
+A Svelte component that displays text in a circular layout with customizable animations and styling.
 
+_(Consider adding a screenshot or GIF of the component in action here)_
 
-### [Live Demo](https://stackblitz.com/edit/withastro-astro-wu7yqp?file=src%2Fpages%2Findex.astro)
+<!-- Example: ![TextCircle Example](link/to/your/image.jpg) -->
 
+## Features
 
-## Instalation
-> using npm
-```
-npm install astro-textcircle
-```
-> using pnpm
-```
-pnpm add astro-textcircle
-```
+- Display text strings in a circular arrangement.
+- Customize circle size, typography (font size, weight, transform), and appearance.
+- Add a custom divider character between words.
+- Set initial rotation.
+- Control animation: duration, easing, delay, direction, iteration count.
+- Trigger animation on component hover or when it enters the viewport.
+- Option to stop animation on hover.
+- Place custom content (like images, icons, or other components) in the center.
+- Highly customizable via props.
+- Built for Svelte 5 using runes.
+- Respects `prefers-reduced-motion`.
 
+## Installation
 
-## Possible Props 
-If Visual Studio Code is your preferred IDE, simply press CRTL+SPACE / CMD+SPACE to reveal the valid properties.
-- **text** [sting]
-- **class** [sting] 
-- **options** [object]
-- **animation** [object]
+```bash
+# npm
+npm install svelte-textcircle
 
-| Property           | Object    | Type              | Default | Desctription                                         |
-| ------------------ | :-------: | :---------------: | :-----: | ---------------------------------------------------- |
-| class              | -         | string            | -       | Add classes to the circle contaner                   |
-| text               | -         | string            | -       | Shows the added text in a circular layout            |
-| spacing            | options   | number            | 1       | Spacing between the letters                          |
-| textTransform      | options   | string            | -       | Will add text-transform with the given value         |
-| fontSizeInRem      | options   | number            | 1       | Will change the font-size to the given number in rem |
-| fontWeight         | options   | string / number   | normal  | Will change the font-weight to the given value       |
-| divider            | options   | string            | -       | Change the spaces to the given value                 |
-| dividerColor       | options   | string            | -       | Change the text color to the given color code        |
-| rotate             | options   | number            | -       | Rotate the circle to the given value in deg          |
-| duration           | animation | string            | -       | Change the animation speed                           |
-| timing             | animation | string            | -       | Animation timing function                            |
-| delay              | animation | string            | 0s      | Animation delay                                      |
-| direction          | animation | normal / reverse  | normal  | Animation rotation direction                         |
-| count              | animation | infinite / number | infinit | Animation rotation count                             |
-| animateOnHover     | animation | boolean           | false   | Start animation on mouse hover                       |
-| stopAnimateOnHover | animation | boolean           | false   | Stop animation on hover                              |
+# pnpm
+pnpm add svelte-textcircle
 
-
-### **divider and dividerColor**
-> Give your text a stylish twist with a divider instead of spacing - just use the **divider** property and set a custom color with **dividerColor**.
-> Keep in mind that in order to use the **dividerColor** property, the **divider** property must be set beforehand.
-
-### **animation**
-> If you are using the **animation** property, you need to declare the **duration** poperty! 
-
-> Keep in mind that using **animateOnHover** + **stopAnimateOnHover** will result in **animateOnHover**
-
-
-## How to use
-```html
----
-import { TextCircle } from 'astro-textcircle';
----
-
-<div>
-
-  <!-- basic -->
-  <TextCircle text="Display text in a circle" />
-
-  <!-- using class with tailwind -->
-  <Textcircle 
-    text="Display text in a circle" 
-    class="text-red-500 absolute top-8 left-8"
-  />
-
-  <!-- using options -->
-  <TextCircle 
-    text="Display text in a circle"
-    options={{ 
-      uppercase: true,
-      fontSizeInRem: 0.75,
-      fontWeight: 'bold',
-      divider: '-',
-      dividerColor: 'red',
-      rotation: 45
-    }}
-  />
-
-  <!-- using animation -->
-  <TextCircle 
-    text="Display text in a circle"
-    animation={{ 
-      duration: '12s',
-      timing: 'linear',
-      delay: '5s',
-      direction: 'reverse',
-      count: 'infinite',
-      animateOnHover: true
-    }}
-  />
-
-</div>
-```
-> Notice that every letter and spacing in your text will be outputed as **set:html={}** 
-
-
-
-## Using Slot
-While **slot** can be used in this component, note that the height of the **slot-container** is dependent on the size of the text-circle.
-
-```html
-  <TextCircle text="Display text in a circle">
-    <img src="/my-image.jpg" alt="" />
-  <TextCircle>
+# yarn
+yarn add svelte-textcircle
 ```
 
-## CSS Classes
-```html
-<div class="lw-textcircle">
-  <div class="lw-textcircle__inner">
-    <p class="lw-textcircle-circle">
-      Circle Text
-    </p>
-    <div class="lw-textcircle-slot">
-      <slot />
-    </div>
-  </div>
-</div>
+## Basic Usage
+
+```svelte
+<script>
+	// Assuming you have configured path aliases or use the full path
+	import Textcircle from '$lib/svelte-textcircle/textcircle.svelte';
+	// Or adjust the import based on your setup if installed as a package:
+	// import { Textcircle } from 'svelte-textcircle';
+</script>
+
+<!-- Basic usage -->
+<Textcircle text={['Svelte', 'Text', 'Circle']} />
+
+<!-- With central content -->
+<Textcircle text={['Place', 'Content', 'Here']}>
+	<img src="/your-logo.svg" alt="Logo" style="max-width: 80%; height: auto;" />
+</Textcircle>
 ```
+
+## Props
+
+### Main Props
+
+| Property    | Type       | Default  | Description                                        |
+| ----------- | ---------- | -------- | -------------------------------------------------- |
+| `text`      | `string[]` | Required | An array of text strings to display in the circle. |
+| `class`     | `string`   | `''`     | Additional CSS class(es) for the main container.   |
+| `options`   | `object`   | `{}`     | Object for visual customization options.           |
+| `animation` | `object`   | `{}`     | Object for animation settings.                     |
+| `children`  | `Snippet`  | `null`   | Svelte Snippet for content in the center.          |
+
+### Options Props (`options={...}`)
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `circlesize` | `string` | `'250px'` | Size (width & height) of the circle. |
+| `textTransform` | `'uppercase' \| 'lowercase' \| 'none'` | `'uppercase'` | CSS `text-transform` for the text. |
+| `fontSize` | `string` | `'1em'` | CSS `font-size` for the text. |
+| `fontWeight` | `string \| number` | `'normal'` | CSS `font-weight` for the text. |
+| `divider` | `string` | `'&diams;'` | HTML entity or character to place between words. Set to `''` or `undefined` to disable. |
+| `dividerColor` | `string` | `undefined` | CSS color for the divider character. Defaults to text color. |
+| `rotate` | `number` | `undefined` | Initial rotation offset in degrees. |
+
+### Animation Props (`animation={...}`)
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `duration` | `string` | `'30s'` | CSS `animation-duration`. |
+| `easing` | `string` | `'linear'` | CSS `animation-timing-function`. |
+| `delay` | `string` | `'0s'` | CSS `animation-delay`. |
+| `direction` | `'normal' \| 'reverse'` | `'normal'` | CSS `animation-direction`. |
+| `count` | `'infinite' \| number` | `'infinite'` | CSS `animation-iteration-count`. |
+| `animateInView` | `boolean` | `true` | Start animation only when component is in viewport. Overridden by `animateOnHover`. |
+| `animateOnHover` | `boolean` | `false` | Pause animation initially, play only on hover. |
+| `stopAnimateOnHover` | `boolean` | `false` | If animating by default (`animateInView` is true and `animateOnHover` is false), pause animation on hover. |
+
+## Examples
+
+### Custom Options
+
+```svelte
+<Textcircle
+	text={['Custom', 'Styling', 'Example']}
+	options={{
+		circlesize: '300px',
+		fontSize: '1.1rem',
+		fontWeight: 700,
+		divider: '•',
+		dividerColor: 'dodgerblue',
+		rotate: -15
+	}}
+/>
+```
+
+### Custom Animation
+
+```svelte
+<Textcircle
+	text={['Animated', 'Text', 'Circle']}
+	animation={{
+		duration: '10s',
+		easing: 'ease-out',
+		direction: 'reverse',
+		count: 5, // Animate 5 times
+		animateOnHover: true // Only animate when hovered
+	}}
+/>
+```
+
+### Stop Animation on Hover
+
+```svelte
+<Textcircle
+	text={['Stop', 'On', 'Hover']}
+	animation={{
+		duration: '20s',
+		stopAnimateOnHover: true // Default animation stops when hovered
+	}}
+/>
+```
+
+### Central Content
+
+```svelte
+<Textcircle text={['Svelte', 'TextCircle', 'Component', 'with', 'Logo']}>
+	<div
+		style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; background: #eee; border-radius: 50%;"
+	>
+		<img src="/logo.svg" alt="Logo" style="width: 60%; height: auto;" />
+	</div>
+</Textcircle>
+```
+
+## CSS Customization
+
+You can target the component's elements using these CSS classes for further styling:
+
+- `.textcircle`: The main container `div`.
+- `.textcircle-container`: The `p` element holding the rotating text.
+- `.textcircle-char`: Individual `span` elements for each character.
+- `.textcircle-char-divider`: The `span` element for the divider character.
+- `.textcircle-children`: The `div` containing the slotted central content.
+
+You can also override the CSS variables used internally, although using the props is recommended:
+
+- `--s`: Circle size
+- `--fs`: Font size
+- `--fw`: Font weight
+- `--tt`: Text transform
+- `--ro`: Initial rotation (in degrees, applied via style)
+- `--du`: Animation duration
+- `--ti`: Animation timing function (easing)
+- `--de`: Animation delay
+- `--di`: Animation direction
+- `--c`: Animation iteration count
+- `--dc`: Divider color
+- `--aoh`: Animation play state (controlled internally)
+
+## Notes
+
+- For optimal appearance with longer text, you might need to decrease `fontSize` or increase `circlesize`.
+- The component maintains its aspect ratio, but ensure the `circlesize` is appropriate for different screen sizes. Consider using viewport units (`vw`, `vh`, `vmin`, `vmax`) or media queries.
+
+## License
+
+MIT
+
+_(Consider adding author/contribution info here)_
+
+<!-- Example: ## Author
+[Your Name/Org](link) -->
