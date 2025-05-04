@@ -22,10 +22,10 @@ A Svelte component that displays text in a circular layout with customizable ani
 
 ```bash
 # npm
-npm install svelte-textcircle
+npm install @lostisworld/svelte-textcircle
 
 # pnpm
-pnpm add svelte-textcircle
+pnpm add @lostisworld/svelte-textcircle
 ```
 
 ## Basic Usage
