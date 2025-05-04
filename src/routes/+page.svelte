@@ -6,7 +6,7 @@
 
 <div class="container">
 	<Textcircle
-		text={['Svelte', 'Tailwind', 'Laravel', 'Typescript']}
+		text={['Svelte', 'Textcircle', 'is-just', 'awesome']}
 		options={{ dividerColor: '#f96743' }}
 	>
 		<svg

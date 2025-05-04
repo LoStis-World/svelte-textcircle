@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import type { TextcircleProps, TextcircleAnimation, TextcircleOptions } from './index.js';
 
 	let { class: classes, text, children, options, animation }: TextcircleProps = $props();
@@ -35,9 +34,10 @@
 			: [...text.join('')].map((char) => char);
 
 	// check with intersectionobser if textcircle is in view if animateInView is true
-	let observer: IntersectionObserver | null = null;
 
-	onMount(() => {
+	function observeTextcircle(node: HTMLElement) {
+		let observer: IntersectionObserver | null = null;
+
 		if (animateInView) {
 			observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
@@ -48,14 +48,17 @@
 				});
 			});
 
-			observer.observe(document.querySelector('.textcircle') as HTMLElement);
+			observer.observe(node);
 		}
-		return () => {
-			if (observer) {
-				observer.disconnect();
+
+		return {
+			destroy() {
+				if (observer) {
+					observer.disconnect();
+				}
 			}
 		};
-	});
+	}
 </script>
 
 <div
@@ -68,6 +71,7 @@
 		stopAnimateOnHover && !animateOnHover && 'textcircle-animate-stop',
 		classes
 	]}
+	use:observeTextcircle
 >
 	<p
 		class="textcircle-container"
