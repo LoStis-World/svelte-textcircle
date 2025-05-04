@@ -50,25 +50,25 @@ pnpm add svelte-textcircle
 
 ### Main Props
 
-| Property    | Type       | Default  | Description                                        |
-| ----------- | ---------- | -------- | -------------------------------------------------- |
-| `text`      | `string[]` | Required | An array of text strings to display in the circle. |
-| `class`     | `string`   | `''`     | Additional CSS class(es) for the main container.   |
-| `options`   | `object`   | `{}`     | Object for visual customization options.           |
-| `animation` | `object`   | `{}`     | Object for animation settings.                     |
-| `children`  | `Snippet`  | `null`   | Svelte Snippet for content in the center.          |
+| Property  | Type     | Default  | Description                                        |
+| --------- | -------- | -------- | -------------------------------------------------- |
+| text      | string[] | Required | An array of text strings to display in the circle. |
+| class     | string   | ''       | Additional CSS class(es) for the main container.   |
+| options   | object   | {}       | Object for visual customization options.           |
+| animation | object   | {}       | Object for animation settings.                     |
+| children  | Snippet  | null     | Svelte Snippet for content in the center.          |
 
 ### Options Props (`options={...}`)
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| `circlesize` | `string` | `'250px'` | Size (width & height) of the circle. |
-| `textTransform` | `'uppercase' \| 'lowercase' \| 'none'` | `'uppercase'` | CSS `text-transform` for the text. |
-| `fontSize` | `string` | `'1em'` | CSS `font-size` for the text. |
-| `fontWeight` | `'lighter' \| 'normal' \| 'bold' \| 'bolder' \| string` | `'normal'` | CSS `font-weight` for the text. |
-| `divider` | `string` | `'&diams;'` | HTML entity or character to place between words. Set to `''` or `undefined` to disable. |
-| `dividerColor` | `string` | `currentColor` | CSS color for the divider character. Defaults to text color. |
-| `rotate` | `number` | `undefined` | Initial rotation offset in degrees. |
+| circlesize | string | '250px' | Size (width & height) of the circle. |
+| textTransform | 'uppercase' \| 'lowercase' \| 'none' | 'uppercase' | CSS `text-transform` for the text. |
+| fontSize | string | '1em' | CSS `font-size` for the text. |
+| fontWeight | 'lighter' \| 'normal' \| 'bold' \| 'bolder' \| string | 'normal' | CSS `font-weight` for the text. |
+| divider | string | '&diams;' | HTML entity or character to place between words. Set to `''` or `undefined` to disable. |
+| dividerColor | string | currentColor | CSS color for the divider character. Defaults to text color. |
+| rotate | number | undefined | Initial rotation offset in degrees. |
 
 ### Animation Props (`animation={...}`)
 
