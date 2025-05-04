@@ -34,22 +34,19 @@
 			: [...text.join('')].map((char) => char);
 
 	// check with intersectionobser if textcircle is in view if animateInView is true
-
 	function observeTextcircle(node: HTMLElement) {
-		let observer: IntersectionObserver | null = null;
+		if (!node || !animateInView) return;
 
-		if (animateInView) {
-			observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => {
-					(entry.target as HTMLElement).style.setProperty(
-						'--aoh',
-						entry.isIntersecting ? 'running' : 'paused'
-					);
-				});
+		const observer: IntersectionObserver = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				(entry.target as HTMLElement).style.setProperty(
+					'--aoh',
+					entry.isIntersecting ? 'running' : 'paused'
+				);
 			});
+		});
 
-			observer.observe(node);
-		}
+		observer.observe(node);
 
 		return {
 			destroy() {
