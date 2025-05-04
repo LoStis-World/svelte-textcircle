@@ -10,23 +10,23 @@ type TextcircleProps = {
 };
 
 type TextcircleOptions = {
-	circlesize?: '250px' | '300px' | string;
-	textTransform?: 'uppercase' | 'lowercase' | 'none';
-	fontSize?: '1em' | '1.5em' | '1rem' | string;
-	fontWeight?: 'lighter' | 'normal' | 'bold' | 'bolder' | number;
-	divider?: string;
-	dividerColor?: string;
-	rotate?: number;
+	circlesize?: '250px' | '300px' | string | null | undefined;
+	textTransform?: 'uppercase' | 'lowercase' | 'none' | null | undefined;
+	fontSize?: '1em' | '1.5em' | '1rem' | string | null | undefined;
+	fontWeight?: 'lighter' | 'normal' | 'bold' | 'bolder' | number | null | undefined;
+	divider?: string | null | undefined;
+	dividerColor?: string | null | undefined;
+	rotate?: number | null | undefined;
 };
 
 type TextcircleAnimation = {
-	duration?: string;
-	timing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string;
-	delay?: string;
-	direction?: 'normal' | 'reverse';
-	count?: 'infinite' | number;
-	animateOnHover?: boolean;
-	stopAnimateOnHover?: boolean;
+	duration?: string | null | undefined;
+	timing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string | null | undefined;
+	delay?: string | null | undefined;
+	direction?: 'normal' | 'reverse' | null | undefined;
+	count?: 'infinite' | number | null | undefined;
+	animateOnHover?: boolean | null | undefined;
+	stopAnimateOnHover?: boolean | null | undefined;
 };
 
 export { Textcircle, type TextcircleProps, type TextcircleAnimation, type TextcircleOptions };

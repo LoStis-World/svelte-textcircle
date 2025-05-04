@@ -5,22 +5,22 @@
 
 	// Destructor options props
 	const {
-		circlesize = '250px',
-		textTransform = 'uppercase', // Replace 'tt' with a default value or variable
-		fontSize = '1rem', // Replace 'fsir' with a default value or variable
-		fontWeight = 'normal', // Replace 'fw' with a default value or variable
+		circlesize,
+		textTransform, // Replace 'tt' with a default value or variable
+		fontSize, // Replace 'fsir' with a default value or variable
+		fontWeight, // Replace 'fw' with a default value or variable
 		divider = '&diams;', // Corrected syntax
-		dividerColor = 'currentColor', // Corrected syntax
-		rotate = 0 // Provide a default value for 'rotate'
+		dividerColor, // Corrected syntax
+		rotate // Provide a default value for 'rotate'
 	}: TextcircleOptions = options || {};
 
 	// Destructor animation props
 	const {
-		duration = '1s', // Provide a default value for 'duration'
-		timing = 'linear', // Corrected syntax
-		delay = '0s', // Corrected syntax
-		direction = 'normal', // Corrected syntax
-		count = 'infinite', // Corrected syntax
+		duration, // Provide a default value for 'duration'
+		timing, // Corrected syntax
+		delay, // Corrected syntax
+		direction, // Corrected syntax
+		count, // Corrected syntax
 		animateOnHover = false, // Corrected syntax
 		stopAnimateOnHover = false // Corrected syntax
 	}: TextcircleAnimation = animation || {};
@@ -28,30 +28,50 @@
 	const textArray =
 		divider?.trim() !== '' && divider !== undefined
 			? text
-					.flatMap((word, idx) => [word, ' ', divider.trim(), ' '])
-					.flatMap((item) => (item === divider.trim() ? [item] : [...item]))
+					.flatMap((word) => [word, ' ', divider?.trim(), ' '])
+					.flatMap((letter) => (letter === divider?.trim() ? [letter] : [...(letter || '')]))
 			: [...text.join('')].map((char) => char);
+	console.log(textArray);
 </script>
 
-<div class={['textcircle', animateOnHover && 'textcircle-animate', classes]}>
+<div style:--s={circlesize} class={['textcircle', animateOnHover && 'textcircle-animate', classes]}>
 	<p
 		class="textcircle-container"
-		style="--fs: {fontSize}; --fw: {fontWeight}; --tt: {textTransform}; --ro: {rotate}; --du: {duration}; --ti: {timing}; --de: {delay}; --di: {direction}; --c: {count}; --dc: {dividerColor}; --s: {circlesize};"
+		style:--fs={fontSize}
+		style:--fw={fontWeight}
+		style:--tt={textTransform}
+		style:--ro={rotate}
+		style:--du={duration}
+		style:--ti={timing}
+		style:--de={delay}
+		style:--di={direction}
+		style:--c={count}
+		style:--dc={dividerColor}
+		aria-label={text.join(' ')}
 	>
 		{#each textArray as char, idx}
 			{#if char === ' '}
-				<span style="--a: {(1 / textArray.length) * idx}turn" class="textcircle-char">
+				<span
+					style="--a: {(1 / textArray.length) * idx}turn"
+					class="textcircle-char"
+					aria-hidden="true"
+				>
 					&nbsp;
 				</span>
 			{:else if char === divider?.trim()}
 				<span
 					style="--a: {(1 / textArray.length) * idx}turn"
 					class="textcircle-char textcircle-char-divider"
+					aria-hidden="true"
 				>
 					{@html char}
 				</span>
 			{:else}
-				<span style="--a: {(1 / textArray.length) * idx}turn" class="textcircle-char">
+				<span
+					style="--a: {(1 / textArray.length) * idx}turn"
+					class="textcircle-char"
+					aria-hidden="true"
+				>
 					{char}
 				</span>
 			{/if}
@@ -59,11 +79,18 @@
 	</p>
 
 	{#if children}
-		<div class="textcircle-children">{@render children()}</div>
+		<div style:--fs={fontSize} class="textcircle-children">
+			{@render children()}
+		</div>
 	{/if}
 </div>
 
 <style>
+	.textcircle {
+		width: var(--s, 250px);
+		height: var(--s, 250px);
+	}
+
 	.textcircle,
 	.textcircle-children {
 		overflow: hidden;
@@ -77,15 +104,17 @@
 		pointer-events: none;
 		padding: 0;
 		margin: 0;
-		font-size: var(--fs);
-		width: var(--s);
-		height: var(--s);
-		text-transform: var(--tt);
+		font-size: var(--fs, 1em);
+		font-weight: var(--fw, normal);
+		width: var(--s, 250px);
+		height: var(--s, 250px);
+		text-transform: var(--tt, uppercase);
 	}
 
 	.textcircle-char {
 		width: 1em;
 		height: 100%;
+		line-height: 1;
 		position: absolute;
 		top: 0;
 		left: 50%;
@@ -95,12 +124,15 @@
 
 	.textcircle-children {
 		z-index: 1;
-		max-width: calc(100% - var(--fs) * 4) !important;
-		max-height: calc(100% - var(--fs) * 4) !important;
+		height: 100%;
+		width: 100%;
+		max-width: calc(var(--s, 250px) - var(--fs, 1em) * 2.5);
+		max-height: calc(var(--s, 250px) - var(--fs, 1em) * 2.5);
+		margin: auto;
 	}
 
 	.textcircle-char-divider {
-		color: var(--dc);
+		color: var(--dc, currentColor);
 	}
 
 	.textcircle-container,
