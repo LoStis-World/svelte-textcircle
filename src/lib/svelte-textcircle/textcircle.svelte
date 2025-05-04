@@ -25,18 +25,12 @@
 		stopAnimateOnHover = false // Corrected syntax
 	}: TextcircleAnimation = animation || {};
 
-	const a = text
-		.flatMap((word, idx) => [word, divider.trim()])
-		.flatMap((item) => (item === divider.trim() ? [item] : [...item]));
-
 	const textArray =
 		divider?.trim() !== '' && divider !== undefined
 			? text
 					.flatMap((word, idx) => [word, ' ', divider.trim(), ' '])
 					.flatMap((item) => (item === divider.trim() ? [item] : [...item]))
 			: [...text.join('')].map((char) => char);
-
-	console.log(a);
 </script>
 
 <div class={['textcircle', animateOnHover && 'textcircle-animate', classes]}>
