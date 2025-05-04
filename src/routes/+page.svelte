@@ -1,3 +1,35 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	import Textcircle from '$lib/svelte-textcircle/textcircle.svelte';
+</script>
+
+<div class="container">
+	<Textcircle
+		text={['Svelte', 'Tailwind', 'Laravel', 'Typescript']}
+		options={{ dividerColor: 'red' }}
+	>
+		<img src="/favicon.png" alt="Logo" width="100" height="100" />
+	</Textcircle>
+</div>
+
+<style>
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		background-color: #181818;
+		color: #ebebeb;
+		font-family:
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			Oxygen,
+			Ubuntu,
+			Cantarell,
+			'Open Sans',
+			'Helvetica Neue',
+			sans-serif;
+	}
+</style>

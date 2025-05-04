@@ -3,7 +3,13 @@
 	"version": "0.0.1",
 	"keywords": [
 		"svelte",
-		"svelte component"
+		"svelte component",
+		"svelte text circle",
+		"svelte text circle component",
+		"animation",
+		"css",
+		"css animation",
+		"css text circle"
 	],
 	"author": "LoSti's World",
 	"license": "MIT",
