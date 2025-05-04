@@ -15,6 +15,7 @@ A Svelte component that displays text in a circular layout with customizable ani
 - Option to stop animation on hover.
 - Place custom content (like images, icons, or other components) in the center.
 - Highly customizable via props.
+- Automatically pauses animation when the component scrolls out of view and resumes it upon re-entry, leveraging `IntersectionObserver` for improved performance.
 - Built for Svelte 5 using runes.
 - Respects `prefers-reduced-motion`.
 
