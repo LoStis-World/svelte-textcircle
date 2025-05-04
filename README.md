@@ -58,7 +58,7 @@ pnpm add svelte-textcircle
 | animation | object   | {}       | Object for animation settings.                     |
 | children  | Snippet  | null     | Svelte Snippet for content in the center.          |
 
-### Options Props (`options={...}`)
+### Options Props (`options={{...}}`)
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -70,7 +70,7 @@ pnpm add svelte-textcircle
 | dividerColor | string | currentColor | CSS color for the divider character. Defaults to text color. |
 | rotate | number | undefined | Initial rotation offset in degrees. |
 
-### Animation Props (`animation={...}`)
+### Animation Props (`animation={{...}}`)
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
