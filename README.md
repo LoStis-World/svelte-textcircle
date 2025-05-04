@@ -2,9 +2,7 @@
 
 A Svelte component that displays text in a circular layout with customizable animations and styling.
 
-_(Consider adding a screenshot or GIF of the component in action here)_
-
-<!-- Example: ![TextCircle Example](link/to/your/image.jpg) -->
+![](./images/svelte-textcircle.jpg)
 
 ## Features
 
@@ -182,8 +180,3 @@ Contributions are welcome! Please ensure all changes are well-documented and tes
 ## License
 
 MIT
-
-_(Consider adding author/contribution info here)_
-
-<!-- Example: ## Author
-[Your Name/Org](link) -->
