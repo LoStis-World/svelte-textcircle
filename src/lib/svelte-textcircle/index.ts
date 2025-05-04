@@ -27,6 +27,7 @@ type TextcircleAnimation = {
 	count?: 'infinite' | number | null | undefined;
 	animateOnHover?: boolean | null | undefined;
 	stopAnimateOnHover?: boolean | null | undefined;
+	animateInView?: boolean | null | undefined;
 };
 
 export { Textcircle, type TextcircleProps, type TextcircleAnimation, type TextcircleOptions };

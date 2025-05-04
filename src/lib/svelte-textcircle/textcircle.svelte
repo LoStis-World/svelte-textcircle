@@ -21,8 +21,9 @@
 		delay, // Corrected syntax
 		direction, // Corrected syntax
 		count, // Corrected syntax
-		animateOnHover = false, // Corrected syntax
-		stopAnimateOnHover = false // Corrected syntax
+		animateInView = true,
+		animateOnHover = true, // Corrected syntax
+		stopAnimateOnHover = true // Corrected syntax
 	}: TextcircleAnimation = animation || {};
 
 	const textArray =
@@ -34,7 +35,17 @@
 	console.log(textArray);
 </script>
 
-<div style:--s={circlesize} class={['textcircle', animateOnHover && 'textcircle-animate', classes]}>
+<div
+	style:--s={circlesize}
+	style:--aoh={animateOnHover ? 'paused' : 'running'}
+	class={[
+		'textcircle',
+		animateOnHover && 'textcircle-animate-hover',
+		animateInView && !animateOnHover && 'textcircle-animate-inview',
+		stopAnimateOnHover && !animateOnHover && 'textcircle-animate-stop',
+		classes
+	]}
+>
 	<p
 		class="textcircle-container"
 		style:--fs={fontSize}
@@ -139,5 +150,26 @@
 	.textcircle-children {
 		grid-area: 1 / 1;
 		border-radius: 100%;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes circleSpin {
+			to {
+				transform: rotate3D(0, 0, 1, -1turn);
+			}
+		}
+
+		.textcircle-animate-inview .textcircle-container,
+		.textcircle-animate-hover .textcircle-container {
+			animation: circleSpin var(--du, 30s) var(--ti, linear) var(--de, 0s) var(--di, normal)
+				var(--c, infinite) var(--aoh, running) forwards;
+		}
+		.textcircle-animate-stop:hover .textcircle-container {
+			animation-play-state: paused !important;
+		}
+
+		.textcircle-animate-hover:hover .textcircle-container {
+			animation-play-state: running !important;
+		}
 	}
 </style>
