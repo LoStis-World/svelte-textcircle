@@ -4,6 +4,8 @@ A Svelte component that displays text in a circular layout with customizable ani
 
 ![](./images/svelte-textcircle.jpg)
 
+### You can check out the [Demo](https://svelte.dev/playground/a0daad6ee5204737aae3511184c9e335?version=5.28.2) in a Svelte Playgrounnd!
+
 ## Features
 
 - Display text strings in a circular arrangement.
