@@ -35,9 +35,10 @@
 
 	// check with intersectionobser if textcircle is in view if animateInView is true
 	function observeTextcircle(node: HTMLElement) {
-		if (!node || !animateInView) return;
+		if (!node || !animateInView || animateOnHover) return;
+		console.log('textcircle in view', node);
 
-		const observer: IntersectionObserver = new IntersectionObserver((entries) => {
+		const textcircleObserver: IntersectionObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				(entry.target as HTMLElement).style.setProperty(
 					'--aoh',
@@ -46,12 +47,12 @@
 			});
 		});
 
-		observer.observe(node);
+		textcircleObserver.observe(node);
 
 		return {
 			destroy() {
-				if (observer) {
-					observer.disconnect();
+				if (textcircleObserver) {
+					textcircleObserver.disconnect();
 				}
 			}
 		};

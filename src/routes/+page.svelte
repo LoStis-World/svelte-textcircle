@@ -1,76 +1,124 @@
 <script>
-	import Textcircle from '$lib/svelte-textcircle/textcircle.svelte';
+	import { Textcircle } from '$lib/svelte-textcircle/index.js';
 </script>
 
-<div class="container"></div>
+<!-- Basic Usage -->
+<section>
+	<h2>Basic Usage</h2>
+	<p>Display an array of words in a simple circular layout with default settings.</p>
+	<Textcircle text={['Svelte', 'is just', 'awesome']} />
+</section>
 
-<div class="container">
+<!-- Custom Options -->
+<section>
+	<h2>Custom Options</h2>
+	<p>Adjust size, typography, divider, and initial rotation for unique styles.</p>
 	<Textcircle
-		text={['Svelte', 'Textcircle', 'is-just', 'awesome']}
-		options={{ dividerColor: '#f96743' }}
-	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="80"
-			height="80"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="#f96743"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path
-				d="M15 8l-5 3l.821 -.495c1.86 -1.15 4.412 -.49 5.574 1.352a3.91 3.91 0 0 1 -1.264 5.42l-5.053 3.126c-1.86 1.151 -4.312 .591 -5.474 -1.251a3.91 3.91 0 0 1 1.263 -5.42l.26 -.16"
-			/><path
-				d="M8 17l5 -3l-.822 .496c-1.86 1.151 -4.411 .491 -5.574 -1.351a3.91 3.91 0 0 1 1.264 -5.42l5.054 -3.127c1.86 -1.15 4.311 -.59 5.474 1.252a3.91 3.91 0 0 1 -1.264 5.42l-.26 .16"
-			/></svg
-		>
-	</Textcircle>
-</div>
+		text={['Svelte', 'is just', 'awesome']}
+		options={{
+			circlesize: '300px',
+			textTransform: 'lowercase',
+			fontSize: '1.4em',
+			fontWeight: 'lighter',
+			divider: '•',
+			dividerColor: 'var(--sv)',
+			rotate: 30
+		}}
+	/>
+</section>
 
-<div class="container">
+<!-- Custom Animation -->
+<section>
+	<h2>Animation on hover</h2>
+	<p>Fine-tune animation duration, easing, delay, direction, and iteration count.</p>
 	<Textcircle
-		text={['Svelte', 'Textcircle', 'is-just', 'awesome']}
-		options={{ dividerColor: '#f96743', circlesize: '400px' }}
-	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="80"
-			height="80"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="#f96743"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path
-				d="M15 8l-5 3l.821 -.495c1.86 -1.15 4.412 -.49 5.574 1.352a3.91 3.91 0 0 1 -1.264 5.42l-5.053 3.126c-1.86 1.151 -4.312 .591 -5.474 -1.251a3.91 3.91 0 0 1 1.263 -5.42l.26 -.16"
-			/><path
-				d="M8 17l5 -3l-.822 .496c-1.86 1.151 -4.411 .491 -5.574 -1.351a3.91 3.91 0 0 1 1.264 -5.42l5.054 -3.127c1.86 -1.15 4.311 -.59 5.474 1.252a3.91 3.91 0 0 1 -1.264 5.42l-.26 .16"
-			/></svg
-		>
+		text={['Svelte', 'is just', 'awesome']}
+		animation={{
+			duration: '10s',
+			easing: 'ease-in-out',
+			delay: '2s',
+			direction: 'reverse',
+			count: 3,
+			animateOnHover: true
+		}}
+	/>
+</section>
+
+<!-- Stop Animation on Hover -->
+<section>
+	<h2>Stop Animation on Hover</h2>
+	<p>Pause the ongoing animation when the user hovers over the component.</p>
+	<Textcircle
+		text={['Svelte', 'is just', 'awesome']}
+		animation={{
+			duration: '15s',
+			stopAnimateOnHover: true
+		}}
+	/>
+</section>
+
+<!-- Central Content -->
+<section>
+	<h2>Central Content</h2>
+	<p>Embed custom content like images or icons in the circle’s center.</p>
+	<Textcircle text={['Svelte', 'is just', 'awesome']}>
+		<img
+			src="https://images.unsplash.com/photo-1728577740843-5f29c7586afe?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+			alt=""
+			style="height:120px;border-radius:50%"
+		/>
 	</Textcircle>
-</div>
+</section>
 
 <style>
-	.container {
+	:global {
+		body {
+			display: grid;
+			padding: 0;
+			margin: 0;
+			font-family:
+				system-ui,
+				-apple-system,
+				BlinkMacSystemFont,
+				'Segoe UI',
+				Roboto,
+				Oxygen,
+				Ubuntu,
+				Cantarell,
+				'Open Sans',
+				'Helvetica Neue',
+				sans-serif;
+			color: var(--p);
+		}
+		:root {
+			--bg: #111;
+			--title: #eee;
+			--sv: #f96743;
+			--p: #555;
+		}
+	}
+
+	section {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		min-height: 100vh;
-		background-color: #111;
-		color: #ebebeb;
-		font-family:
-			system-ui,
-			-apple-system,
-			BlinkMacSystemFont,
-			'Segoe UI',
-			Roboto,
-			Oxygen,
-			Ubuntu,
-			Cantarell,
-			'Open Sans',
-			'Helvetica Neue',
-			sans-serif;
+		min-height: 100dvh;
+		background-color: var(--bg);
+		padding-block: 5rem;
+		box-shadow: border-box;
+		text-align: center;
+	}
+
+	h2 {
+		margin: 0;
+		color: var(--title);
+	}
+
+	p {
+		margin-bottom: 2rem;
+		max-width: 40rem;
+		margin-bottom: 2rem;
+		color: var(--p);
 	}
 </style>
