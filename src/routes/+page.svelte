@@ -72,6 +72,12 @@
 
 <style>
 	:global {
+		:root {
+			--bg: #111;
+			--title: #eee;
+			--sv: #f96743;
+			--p: #555;
+		}
 		body {
 			display: grid;
 			padding: 0;
@@ -88,13 +94,7 @@
 				'Open Sans',
 				'Helvetica Neue',
 				sans-serif;
-			color: var(--p);
-		}
-		:root {
-			--bg: #111;
-			--title: #eee;
-			--sv: #f96743;
-			--p: #555;
+			color: var(--title);
 		}
 	}
 
