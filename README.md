@@ -169,7 +169,7 @@ You can also override the CSS variables used internally, although using the prop
 ## Notes
 
 - For optimal appearance with longer text, you might need to decrease `fontSize` or increase `circlesize`.
-- The component maintains its aspect ratio, but ensure the `circlesize` is appropriate for different screen sizes. Consider using viewport units (`vw`, `vh`, `vmin`, `vmax`) or media queries.
+- The component maintains its aspect ratio, but ensure the `circlesize` is appropriate for different screen sizes.
 
 ## Contributing
 
