@@ -36,7 +36,6 @@
 	// check with intersectionobser if textcircle is in view if animateInView is true
 	function observeTextcircle(node: HTMLElement) {
 		if (!node || !animateInView || animateOnHover) return;
-		console.log('textcircle in view', node);
 
 		const textcircleObserver: IntersectionObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
@@ -83,8 +82,8 @@
 		style:--di={direction}
 		style:--c={count}
 		style:--dc={dividerColor}
-		aria-label={text.join(' ')}
 	>
+		<span class="textcircle-container-sr-only">{text.join(' ')}</span>
 		{#each textArray as char, idx}
 			{#if char === ' '}
 				<span
@@ -127,11 +126,16 @@
 		height: var(--s, 250px);
 	}
 
-	.textcircle,
-	.textcircle-children {
+	.textcircle {
 		overflow: hidden;
 		display: grid;
 		place-content: center;
+	}
+
+	.textcircle-children {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.textcircle-container {
@@ -145,6 +149,18 @@
 		width: var(--s, 250px);
 		height: var(--s, 250px);
 		text-transform: var(--tt, uppercase);
+	}
+
+	.textcircle-container-sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
 	}
 
 	.textcircle-char {
